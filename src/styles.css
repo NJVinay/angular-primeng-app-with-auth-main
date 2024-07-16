@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  width: 360px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #1e7109;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+small {
+  color: rgb(242, 9, 9);
+}
+
+p-button {
+  margin-top: 20px;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}

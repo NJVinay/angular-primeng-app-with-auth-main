@@ -24,12 +24,14 @@ A Single Page Application (SPA) built with Angular and PrimeNG, featuring user a
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
    cd your-repo-name
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -51,6 +53,7 @@ ng build --configuration production
 The project is configured with GitHub Actions for automatic deployment to GitHub Pages on every push to the main branch.
 
 Manual deployment:
+
 ```bash
 npx angular-cli-ghpages --dir=dist/angular-primeng-app
 ```

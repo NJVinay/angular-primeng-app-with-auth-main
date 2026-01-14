@@ -4,3 +4,11 @@ export interface User {
     email: string;
     password: string
 }
+
+export interface Item {
+    id: string;
+    title: string;
+    content: string;
+    author: string;
+    createdAt: Date;
+}

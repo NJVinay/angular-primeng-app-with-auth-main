@@ -1,0 +1,48 @@
+<div class="p-4">
+  <p-button label="Back to Home" icon="pi pi-arrow-left" styleClass="p-button-secondary mb-4" routerLink="/home"></p-button>
+
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <p-card header="Create New Item" [style]="{ width: '600px', margin: 'auto' }">
+      <div class="field">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          pInputText
+          formControlName="title"
+          class="w-full"
+          name="title"
+          placeholder="Enter title"
+        />
+        <small
+          *ngIf="createForm.get('title')?.invalid && (createForm.get('title')?.dirty || createForm.get('title')?.touched)"
+          class="block p-error"
+        >
+          Title is required.
+        </small>
+      </div>
+      <div class="field">
+        <label for="content">Content</label>
+        <textarea
+          pInputTextarea
+          formControlName="content"
+          class="w-full"
+          rows="5"
+          name="content"
+          placeholder="Enter content"
+        ></textarea>
+        <small
+          *ngIf="createForm.get('content')?.invalid && (createForm.get('content')?.dirty || createForm.get('content')?.touched)"
+          class="block p-error"
+        >
+          Content is required.
+        </small>
+      </div>
+      <p-button
+        label="Create"
+        styleClass="w-full"
+        [disabled]="createForm.invalid"
+        type="submit"
+      ></p-button>
+    </p-card>
+  </form>
+</div>

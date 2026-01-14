@@ -29,24 +29,28 @@ export class LoginComponent {
   }
   get password() { return this.loginForm.controls['password']; }
 
+  errorMessage: string | null = null;
+
   loginUser() {
     if (this.loginForm.invalid) return;
     const { email, password } = this.loginForm.value;
+    this.errorMessage = null;
     this.isLoading = true;
     this.authService.getUserByEmail(email as string).subscribe(
       response => {
         this.isLoading = false;
         if (response.length > 0 && response[0].password === password) {
-          // persist both a minimal session flag and full user for UI
           sessionStorage.setItem('email', email as string);
           localStorage.setItem('loggedInUser', JSON.stringify(response[0]));
           this.router.navigate(['/home']);
         } else {
+          this.errorMessage = 'Email or password is wrong';
           this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Email or password is wrong' });
         }
       },
       error => {
         this.isLoading = false;
+        this.errorMessage = 'Something went wrong';
         this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
       }
     )

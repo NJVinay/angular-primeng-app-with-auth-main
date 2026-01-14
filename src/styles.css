@@ -71,3 +71,7 @@ p-button {
 
 /* Small utility */
 .text-center{text-align:center}
+
+/* Overlay for simple loading spinner */
+.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.7);z-index:50;border-radius:6px}
+.p-card .overlay{border-radius:6px}

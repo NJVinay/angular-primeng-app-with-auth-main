@@ -3,6 +3,9 @@
 
   <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
     <p-card header="Create New Item" [style]="{ width: '600px', margin: 'auto' }">
+      <div *ngIf="isLoading" class="overlay">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
       <div class="field">
         <label for="title">Title</label>
         <input
@@ -44,6 +47,12 @@
         [loading]="isLoading"
         type="submit"
       ></p-button>
+      <div *ngIf="errorMessage" class="p-mt-3">
+        <p-message severity="error" text="{{ errorMessage }}"></p-message>
+        <div class="p-mt-2 text-center">
+          <button pButton type="button" label="Retry" (click)="onSubmit()" class="p-button-text"></button>
+        </div>
+      </div>
     </p-card>
   </form>
 </div>

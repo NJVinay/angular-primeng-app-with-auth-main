@@ -13,6 +13,7 @@ export class CreateComponent {
     createForm: FormGroup;
     currentUser: any;
     isLoading: boolean = false;
+    errorMessage: string | null = null;
 
     constructor(
         private fb: FormBuilder,
@@ -40,6 +41,7 @@ export class CreateComponent {
                 author: this.currentUser.fullName
             };
             this.isLoading = true;
+            this.errorMessage = null;
             this.itemService.createItem(itemData).subscribe({
                 next: () => {
                     this.isLoading = false;
@@ -47,6 +49,7 @@ export class CreateComponent {
                 },
                 error: (err) => {
                     this.isLoading = false;
+                    this.errorMessage = 'Failed to create item';
                     console.error('Error creating item:', err);
                 }
             });

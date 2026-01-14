@@ -1,6 +1,9 @@
 <div class="auth-shell">
   <form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
     <p-card header="Create Account" class="auth-card">
+    <div *ngIf="isLoading" class="overlay">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
       <!-- First Name Field -->
       <div class = "row">
         <div class = "col">
@@ -169,6 +172,12 @@
         [loading]="isLoading"
         type="submit"
       ></p-button>
+      <div *ngIf="errorMessage" class="p-mt-3">
+        <p-message severity="error" text="{{ errorMessage }}"></p-message>
+        <div class="p-mt-2 text-center">
+          <button pButton type="button" label="Retry" (click)="submitDetails()" class="p-button-text"></button>
+        </div>
+      </div>
 
       <div class="mt-2 text-center">Already a member? <a routerLink="/login">Login</a></div>
 

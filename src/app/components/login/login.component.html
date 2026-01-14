@@ -1,5 +1,8 @@
 <div class="auth-shell">
   <p-card header="Sign in" class="auth-card">
+    <div *ngIf="isLoading" class="overlay">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
     <div class="field">
       <label for="email">Email</label>
       <input
@@ -42,6 +45,12 @@
       [loading]="isLoading"
       type="submit"
     ></p-button>
+    <div *ngIf="errorMessage" class="p-mt-3">
+      <p-message severity="error" text="{{ errorMessage }}"></p-message>
+      <div class="p-mt-2 text-center">
+        <button pButton type="button" label="Retry" (click)="loginUser()" class="p-button-text"></button>
+      </div>
+    </div>
     <div class="mt-2 text-center">Not a member? <a routerLink="/register">Register</a></div>
   </p-card>
 </div>

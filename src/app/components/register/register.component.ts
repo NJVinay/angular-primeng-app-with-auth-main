@@ -14,6 +14,7 @@ import { passwordMatchValidator } from 'src/app/shared/password-match.directive'
 })
 export class RegisterComponent {
   isLoading: boolean = false;
+  errorMessage: string | null = null;
 
   registerForm = this.fb.group({
     firstName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
@@ -67,16 +68,17 @@ export class RegisterComponent {
     const postData = { ...this.registerForm.value };
     delete postData.confirmPassword;
     this.isLoading = true;
+    this.errorMessage = null;
     this.authService.registerUser(postData as User).subscribe(
       response => {
         this.isLoading = false;
-        // persist created user for immediate UX
         try { localStorage.setItem('loggedInUser', JSON.stringify(response)); } catch (e) { }
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Registered successfully' });
         this.router.navigate(['login'])
       },
       error => {
         this.isLoading = false;
+        this.errorMessage = 'Something went wrong';
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
       }
     )

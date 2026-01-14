@@ -1,6 +1,6 @@
 [build]
   command = "npm run build -- --configuration production"
-  publish = "dist/angular-primeng-app"
+  publish = "dist/todo-list-app"
   functions = "netlify/functions"
 
 [[redirects]]

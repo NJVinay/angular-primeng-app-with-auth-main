@@ -4,13 +4,22 @@
       "fullName": "test user",
       "email": "test1@gmail.com",
       "password": "1234",
-      "id": 1
+      "id": "1"
     },
     {
       "fullName": "test Data",
       "email": "test@gmail.com",
       "password": "1234",
-      "id": 2
+      "id": "2"
+    },
+    {
+      "id": "d773",
+      "firstName": "Jyotir Vinay",
+      "lastName": "Naram",
+      "gender": "male",
+      "phone": "0768944415",
+      "email": "jv5102003@gmail.com",
+      "password": "Localhost1@"
     }
   ]
 }

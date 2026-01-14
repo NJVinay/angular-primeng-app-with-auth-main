@@ -8,6 +8,7 @@ import { passwordMatchValidator } from 'src/app/shared/password-match.directive'
 
 @Component({
   selector: 'app-register',
+  standalone: false,
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

@@ -10,7 +10,6 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
@@ -29,7 +28,6 @@ import { MessageService } from 'primeng/api';
     InputTextModule,
     ReactiveFormsModule,
     ButtonModule,
-    HttpClientModule,
     ToastModule,
     BrowserAnimationsModule
   ],

@@ -1,25 +1,29 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/auth';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private baseUrl = 'http://localhost:3000';
+  private users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
 
+  constructor() { }
 
-  constructor(private http: HttpClient) { }
-
-  registerUser(userDetails: User) {
-    return this.http.post(`${this.baseUrl}/users`, userDetails);
+  registerUser(userDetails: User): Observable<User> {
+    const existing = this.users.find(u => u.email === userDetails.email);
+    if (existing) {
+      return throwError(() => new Error('User already exists'));
+    }
+    this.users.push(userDetails);
+    localStorage.setItem('users', JSON.stringify(this.users));
+    return of(userDetails);
   }
 
   getUserByEmail(email: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}`);
+    const user = this.users.filter(u => u.email === email);
+    return of(user);
   }
-
 
 }

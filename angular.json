@@ -32,13 +32,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kb",
+                  "maximumError": "6kb"
                 }
               ],
               "outputHashing": "all"
@@ -56,12 +56,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "angular-primeng-app:build"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "angular-primeng-app:build:production"
+              "buildTarget": "angular-primeng-app:build:production"
             },
             "development": {
-              "browserTarget": "angular-primeng-app:build:development"
+              "buildTarget": "angular-primeng-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,5 +87,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

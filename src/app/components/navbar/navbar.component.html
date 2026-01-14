@@ -1,0 +1,10 @@
+<header class="app-navbar p-shadow-2">
+  <div class="container-navbar">
+    <div class="brand" (click)="goHome()">MyApp</div>
+    <div class="nav-actions">
+      <button pButton type="button" label="Create" icon="pi pi-plus" class="p-button-text" (click)="goCreate()"></button>
+      <span *ngIf="currentUser" class="username">{{ currentUser.fullName }}</span>
+      <button pButton type="button" icon="pi pi-sign-out" class="p-button-text" (click)="logout()" aria-label="logout"></button>
+    </div>
+  </div>
+</header>

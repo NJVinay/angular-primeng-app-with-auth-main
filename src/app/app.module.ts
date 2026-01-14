@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateComponent } from './components/create/create.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +25,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     RegisterComponent,
     HomeComponent,
     CreateComponent
+    , NavbarComponent
   ],
   imports: [
     BrowserModule,

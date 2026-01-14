@@ -1,5 +1,5 @@
-<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-  <p-card header="Login" [style]="{ width: '360px' }">
+<div class="auth-shell">
+  <p-card header="Sign in" class="auth-card">
     <div class="field">
       <label for="email">Email</label>
       <input
@@ -41,6 +41,6 @@
       [disabled]="loginForm.invalid"
       type="submit"
     ></p-button>
-    <div class="mt-2">Not a member? <a routerLink="/register">Register</a></div>
+    <div class="mt-2 text-center">Not a member? <a routerLink="/register">Register</a></div>
   </p-card>
-</form>
+</div>

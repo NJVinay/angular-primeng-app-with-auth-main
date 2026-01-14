@@ -1,0 +1,6 @@
+.app-navbar{background:linear-gradient(90deg,#0ea5a4,#60a5fa);color:#fff;padding:0.5rem 1rem;}
+.container-navbar{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto}
+.brand{font-weight:700;font-size:1.125rem;cursor:pointer}
+.nav-actions{display:flex;align-items:center;gap:0.5rem}
+.username{margin-right:0.5rem;font-size:0.95rem}
+@media (max-width:600px){.nav-actions button.p-button-text{display:none}.username{display:none}}

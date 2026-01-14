@@ -50,3 +50,24 @@ p-button {
 .mt-2 {
   margin-top: 20px;
 }
+
+/* App layout */
+.app-main{max-width:1100px;margin:1.25rem auto;padding:0 1rem}
+
+/* Home cards grid */
+.grid{display:flex;flex-wrap:wrap;gap:1rem}
+.grid .card-col{flex:1 1 calc(33.333% - 1rem);min-width:250px}
+
+@media (max-width:900px){
+  .grid .card-col{flex:1 1 calc(50% - 1rem)}
+}
+@media (max-width:600px){
+  .grid .card-col{flex:1 1 100%}
+}
+
+/* Auth card centering */
+.auth-shell{display:flex;align-items:center;justify-content:center;height:calc(100vh - 64px);padding:1rem}
+.auth-card{width:100%;max-width:420px}
+
+/* Small utility */
+.text-center{text-align:center}

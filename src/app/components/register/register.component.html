@@ -1,6 +1,6 @@
-<div class = "container">
+<div class="auth-shell">
   <form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
-    <p-card header="Register" [style]="{ width: '360px' }">
+    <p-card header="Create Account" class="auth-card">
       <!-- First Name Field -->
       <div class = "row">
         <div class = "col">
@@ -163,14 +163,13 @@
 
       <!-- Register Button -->
       <p-button
-        label="Register"
+        label="Create Account"
         styleClass="w-full"
         [disabled]="registerForm.invalid"
         type="submit"
       ></p-button>
 
-      <!-- Already a member? Login Button -->
-      <div class="mt-2">Already a member? <a routerLink="/login">Login</a></div>
+      <div class="mt-2 text-center">Already a member? <a routerLink="/login">Login</a></div>
 
     </p-card>
   </form>

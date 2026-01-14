@@ -1,95 +1,89 @@
-# SPA
+# SPA (Angular + PrimeNG)
 
-A Single Page Application (SPA) built with Angular and PrimeNG, featuring user authentication (login/register) using localStorage for data persistence. No backend required - fully static and deployable to GitHub Pages.
+This is a Single Page Application built with Angular and PrimeNG. The project includes simple client-side authentication and a small mock API (served as Netlify Functions) for demo purposes.
 
 ## Live Demo
 
-🌐 [View Live Demo](https://njvinay.github.io/angular-primeng-app-with-auth-main/)
+The app is ready to be deployed to Netlify. After you connect this repository to Netlify the site URL will appear here.
 
 ## Features
 
-- User Registration and Login
-- Client-side authentication with localStorage
-- Responsive UI with PrimeNG components
-- Form validation
-- Route guards for protected pages
+- User Registration and Login (client-side/localStorage)
+- Responsive UI using PrimeNG components
+- Mock API available via Netlify Functions at `/api/*`
 
 ## Development
 
 ### Prerequisites
 
-- Node.js (LTS version recommended)
+- Node.js (LTS recommended)
 - npm
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the repository and install dependencies:
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
-   ```
-
-2. Install dependencies:
-
-   ```bash
+   git clone <your-repo-url>
+   cd <repo-folder>
    npm install
    ```
 
-3. Start development server:
+2. Start the dev server:
+
    ```bash
    ng serve
    ```
-   Navigate to `http://localhost:4200/`
 
-### Build
+   Open http://localhost:4200
 
-```bash
-ng build --configuration production
-```
-
-### Deployment
-
-The project is configured with GitHub Actions for automatic deployment to GitHub Pages on every push to the main branch.
-
-Manual deployment:
+### Build (production)
 
 ```bash
-npx angular-cli-ghpages --dir=dist/angular-primeng-app
+npm run build:prod
 ```
 
-## Technologies Used
+The production build output is `dist/angular-primeng-app`.
 
-- Angular 18
-- PrimeNG 17
-- TypeScript
-- RxJS
-- localStorage for data persistence
+## Deploy to Netlify (recommended)
 
-## Project Structure
+This project includes Netlify configuration and serverless functions under `netlify/functions`.
 
+Steps to deploy from GitHub:
+
+1. Push your final changes to GitHub.
+2. In Netlify, click **New site from Git** and connect your GitHub repo.
+3. Configure build settings:
+
+   - Build command: `npm ci && npm run build -- --configuration production` or `npm run build:prod`
+   - Publish directory: `dist/angular-primeng-app`
+   - Functions directory: `netlify/functions`
+
+4. Deploy. Netlify will build the site and expose functions under `/api/*` (e.g. `/api/users`).
+
+Local testing with Netlify CLI:
+
+```bash
+npm i -g netlify-cli
+netlify dev
 ```
-src/
-├── app/
-│   ├── components/
-│   │   ├── login/
-│   │   ├── register/
-│   │   └── home/
-│   ├── guards/
-│   ├── services/
-│   └── interfaces/
-├── assets/
-└── styles.css
-```
+
+Then open `http://localhost:8888` and test `/api/users` and SPA routes like `/register`.
+
+## API Endpoints (Netlify Functions)
+
+- `/api/users` — returns users from `db.json`
+- `/api/items` — returns items (if present in `db.json`)
+
+## Notes
+
+- If you prefer another host, the project can be deployed to Render, Vercel, or similar platforms.
+- The app uses `localStorage` for authentication demo purposes — not suitable for production authentication.
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+Fork, create a branch, make changes, test, and open a pull request.
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+MIT

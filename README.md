@@ -1,27 +1,92 @@
-# AngularPrimengApp
+# SPA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+A Single Page Application (SPA) built with Angular and PrimeNG, featuring user authentication (login/register) using localStorage for data persistence. No backend required - fully static and deployable to GitHub Pages.
 
-## Development server
+## Live Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+🌐 [View Live Demo](https://njvinay.github.io/angular-primeng-app-with-auth-main/)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- User Registration and Login
+- Client-side authentication with localStorage
+- Responsive UI with PrimeNG components
+- Form validation
+- Route guards for protected pages
 
-## Build
+## Development
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
 
-## Running unit tests
+- Node.js (LTS version recommended)
+- npm
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Installation
 
-## Running end-to-end tests
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git
+   cd your-repo-name
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Further help
+3. Start development server:
+   ```bash
+   ng serve
+   ```
+   Navigate to `http://localhost:4200/`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Build
+
+```bash
+ng build --configuration production
+```
+
+### Deployment
+
+The project is configured with GitHub Actions for automatic deployment to GitHub Pages on every push to the main branch.
+
+Manual deployment:
+```bash
+npx angular-cli-ghpages --dir=dist/angular-primeng-app
+```
+
+## Technologies Used
+
+- Angular 18
+- PrimeNG 17
+- TypeScript
+- RxJS
+- localStorage for data persistence
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── login/
+│   │   ├── register/
+│   │   └── home/
+│   ├── guards/
+│   ├── services/
+│   └── interfaces/
+├── assets/
+└── styles.css
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).

@@ -17,6 +17,8 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { MessageModule } from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ToastModule,
     BrowserAnimationsModule,
     InputTextareaModule
+    , ProgressSpinnerModule
+    , MessageModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

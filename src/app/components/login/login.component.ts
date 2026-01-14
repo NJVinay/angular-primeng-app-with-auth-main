@@ -55,4 +55,8 @@ export class LoginComponent {
       }
     )
   }
+
+  goToAbout() {
+    this.router.navigate(['/about']);
+  }
 }

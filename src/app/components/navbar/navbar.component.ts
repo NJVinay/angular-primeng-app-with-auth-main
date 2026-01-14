@@ -2,29 +2,47 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-    constructor(private router: Router) { }
+  isMenuOpen = false;
 
-    get currentUser() {
-        const u = localStorage.getItem('loggedInUser');
-        return u ? JSON.parse(u) : null;
-    }
+  constructor(private router: Router) { }
 
-    goHome() {
-        this.router.navigate(['home']);
-    }
+  get currentUser() {
+    const u = localStorage.getItem('loggedInUser');
+    return u ? JSON.parse(u) : null;
+  }
 
-    goCreate() {
-        this.router.navigate(['create']);
-    }
+  isLoginPage() {
+    return this.router.url === '/login';
+  }
 
-    logout() {
-        localStorage.removeItem('loggedInUser');
-        sessionStorage.clear();
-        this.router.navigate(['login']);
-    }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  goHome() {
+    this.router.navigate(['home']);
+    this.isMenuOpen = false;
+  }
+
+  goLogin() {
+    this.router.navigate(['login']);
+    this.isMenuOpen = false;
+  }
+
+  goRegister() {
+    this.router.navigate(['register']);
+    this.isMenuOpen = false;
+  }
+
+  logout() {
+    localStorage.removeItem('loggedInUser');
+    sessionStorage.clear();
+    this.router.navigate(['login']);
+    this.isMenuOpen = false;
+  }
 }

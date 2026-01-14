@@ -1,58 +1,58 @@
-<div class="auth-shell">
-  <p-card header="Sign in" class="auth-card">
+<div class="auth-container">
+  <div class="auth-card">
+    <h2 class="auth-title">Sign In</h2>
     <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
       <div *ngIf="isLoading" class="overlay">
-      <p-progressSpinner></p-progressSpinner>
-    </div>
-    <div class="field">
-      <label for="email">Email</label>
-      <input
-        type="text"
-        pInputText
-        formControlName="email"
-        class="w-full"
-        name="email"
-        placeholder="Type your email"
-      />
-      <small
-        *ngIf="email.invalid && (email.dirty || email.touched)"
-        class="block p-error"
-      >
-        <div *ngIf="email.errors?.['required']">Email is required.</div>
-        <div *ngIf="email.errors?.['email']">Email should be valid</div>
-      </small>
-    </div>
-    <div class="field">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        pInputText
-        formControlName="password"
-        class="w-full"
-        name="password"
-        placeholder="Type your password"
-      />
-      <small
-        *ngIf="password.invalid && (password.dirty || password.touched)"
-        class="block p-error"
-      >
-        <div *ngIf="password.errors?.['required']">Password is required.</div>
-      </small>
-    </div>
-      <p-button
-        label="SIGN IN"
-        styleClass="w-full"
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          pInputText
+          formControlName="email"
+          placeholder="Enter your email"
+        />
+        <small
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="p-error"
+        >
+          <div *ngIf="email.errors?.['required']">Email is required.</div>
+          <div *ngIf="email.errors?.['email']">Please enter a valid email.</div>
+        </small>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          pInputText
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+        <small
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="p-error"
+        >
+          <div *ngIf="password.errors?.['required']">Password is required.</div>
+        </small>
+      </div>
+      <button
+        pButton
+        label="Sign In"
         [disabled]="loginForm.invalid || isLoading"
         [loading]="isLoading"
         type="submit"
-      ></p-button>
+      ></button>
     </form>
-    <div *ngIf="errorMessage" class="p-mt-3">
-      <p-message severity="error" text="{{ errorMessage }}"></p-message>
-      <div class="p-mt-2 text-center">
-        <button pButton type="button" label="Retry" (click)="loginUser()" class="p-button-text"></button>
-      </div>
+    <div *ngIf="errorMessage" class="error-message">
+      <span>{{ errorMessage }}</span>
+      <button pButton type="button" label="Retry" (click)="loginUser()"></button>
     </div>
-    <div class="mt-2 text-center">Not a member? <a routerLink="/register">Register</a></div>
-  </p-card>
+    <div class="switch-auth">
+      <span>Not a member? </span>
+      <a routerLink="/register">Register</a>
+    </div>
+    <div class="about-link">
+      <a (click)="goToAbout()">Confused what to do?</a>
+    </div>
+  </div>
 </div>

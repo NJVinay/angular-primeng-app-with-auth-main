@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-primeng-app": {
+    "todo-list-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-primeng-app",
+            "outputPath": "dist/todo-list-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -57,14 +57,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "angular-primeng-app:build"
+            "buildTarget": "todo-list-app:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "angular-primeng-app:build:production"
+              "buildTarget": "todo-list-app:build:production"
             },
             "development": {
-              "buildTarget": "angular-primeng-app:build:development"
+              "buildTarget": "todo-list-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-primeng-app:build"
+            "browserTarget": "todo-list-app:build"
           }
         },
         "test": {

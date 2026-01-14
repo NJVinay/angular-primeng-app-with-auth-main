@@ -1,25 +1,31 @@
-<div class="p-4">
-  <div class="flex justify-content-between align-items-center mb-4">
-    <h1>Welcome to the Dashboard</h1>
-    <div>
-      <span class="mr-3">Hello, {{ currentUser?.fullName }}</span>
-      <p-button label="Create New Item" icon="pi pi-plus" (onClick)="createNew()"></p-button>
-      <p-button label="Sign out" (onClick)="logOut()" styleClass="p-button-secondary ml-2"></p-button>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Welcome {{ currentUser?.fullName }}</h1>
+    <p>Here's your to-do list for today.</p>
+  </header>
+
+  <div class="quick-actions">
+    <button pButton label="Create New Item" icon="pi pi-plus" (click)="createNew()"></button>
+  </div>
+
+  <div class="item-grid" *ngIf="items.length > 0">
+    <div class="item-card" *ngFor="let item of items" [class.completed]="item.completed">
+      <div class="item-header">
+        <p-checkbox [(ngModel)]="item.completed" [binary]="true" (onChange)="onCheckboxChange(item)"></p-checkbox>
+        <h3 class="item-title">{{ item.title }}</h3>
+        <button pButton icon="pi pi-trash" class="p-button-danger p-button-rounded" (click)="deleteItem(item.id)"></button>
+      </div>
+      <p class="item-content">{{ item.content }}</p>
+      <div class="item-footer">
+        <small>{{ item.createdAt | date:'mediumDate' }}</small>
+        <span>By {{ item.author }}</span>
+      </div>
     </div>
   </div>
 
-  <div class="grid">
-    <div class="card-col" *ngFor="let item of items">
-      <p-card [header]="item.title" class="p-shadow-1">
-        <div class="p-mb-2">{{ item.content }}</div>
-        <ng-template pTemplate="footer">
-          <small>By {{ item.author }} • {{ item.createdAt | date:'mediumDate' }}</small>
-        </ng-template>
-      </p-card>
-    </div>
-  </div>
-
-  <div *ngIf="items.length === 0" class="text-center mt-4">
-    <p>No items yet. <a (click)="createNew()" style="cursor: pointer;">Create your first item!</a></p>
+  <div class="empty-state" *ngIf="items.length === 0">
+    <h3>No items yet!</h3>
+    <p>Get started by creating your first item.</p>
+    <button pButton label="Create New Item" (click)="createNew()"></button>
   </div>
 </div>

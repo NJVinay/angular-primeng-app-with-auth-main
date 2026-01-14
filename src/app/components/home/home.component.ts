@@ -1,41 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { ItemService } from '../../services/item.service';
-import { Item, User } from '../../interfaces/auth';
 
 @Component({
   selector: 'app-home',
-  standalone: false,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  items: Item[] = [];
+  currentUser: any;
+  items: any[] = [];
 
-  constructor(private router: Router, private itemService: ItemService) { }
+  constructor(
+    private authService: AuthService,
+    private itemService: ItemService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
-    this.loadItems();
-  }
+  ngOnInit(): void {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      this.currentUser = JSON.parse(loggedInUser);
+    }
 
-  loadItems() {
     this.itemService.getItems().subscribe(items => {
-      this.items = items;
+      this.items = items.map(item => ({ ...item, completed: false }));
     });
   }
 
-  get currentUser(): User | null {
-    const user = localStorage.getItem('loggedInUser');
-    return user ? JSON.parse(user) : null;
+  createNew(): void {
+    this.router.navigate(['/create']);
   }
 
-  logOut() {
-    sessionStorage.clear();
-    localStorage.removeItem('loggedInUser');
-    this.router.navigate(['login']);
+  deleteItem(id: string): void {
+    this.itemService.deleteItem(id).subscribe(() => {
+      this.items = this.items.filter(item => item.id !== id);
+    });
   }
 
-  createNew() {
-    this.router.navigate(['create']);
+  onCheckboxChange(item: any): void {
+    // Here you can add logic to update the item's status on the backend
+    console.log('Item completion status changed:', item);
   }
 }

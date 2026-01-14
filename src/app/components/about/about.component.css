@@ -1,0 +1,84 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a8e0ff 0%, #f6d1ff 100%);
+}
+
+.about-container {
+  padding: 3rem;
+}
+
+.about-card {
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  text-align: center;
+  color: #333;
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.about-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.about-subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.features-list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  text-align: left;
+  display: inline-block;
+}
+
+.features-list li {
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  transition: transform 0.2s ease;
+}
+
+.features-list li:hover {
+  transform: translateX(5px);
+}
+
+.tech-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.tech-icons img {
+  width: 60px;
+  height: 60px;
+  transition: all 0.3s ease;
+}
+
+.tech-icons img:hover {
+  filter: none;
+  transform: scale(1.1);
+}
+
+button {
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  border: none;
+  box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}

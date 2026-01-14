@@ -1,10 +1,18 @@
-<header class="app-navbar p-shadow-2">
+<header class="app-navbar">
   <div class="container-navbar">
-    <div class="brand" (click)="goHome()">MyApp</div>
-    <div class="nav-actions">
-      <button pButton type="button" label="Create" icon="pi pi-plus" class="p-button-text" (click)="goCreate()"></button>
-      <span *ngIf="currentUser" class="username">{{ currentUser.fullName }}</span>
-      <button pButton type="button" icon="pi pi-sign-out" class="p-button-text" (click)="logout()" aria-label="logout"></button>
-    </div>
+    <div class="brand" (click)="goHome()">Basic SPA ToDo</div>
+    <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle menu">
+      <i class="pi" [ngClass]="isMenuOpen ? 'pi-times' : 'pi-bars'"></i>
+    </button>
+    <nav class="nav-links" [class.show-menu]="isMenuOpen">
+      <ng-container *ngIf="currentUser">
+        <span class="username">{{ currentUser.fullName }}</span>
+        <a (click)="logout()">Logout</a>
+      </ng-container>
+      <ng-container *ngIf="!currentUser">
+        <a *ngIf="!isLoginPage()" (click)="goLogin()">Login</a>
+        <a *ngIf="isLoginPage()" (click)="goRegister()">Sign Up</a>
+      </ng-container>
+    </nav>
   </div>
 </header>

@@ -7,11 +7,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { CreateComponent } from './components/create/create.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +18,7 @@ import { MessageService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MessageModule } from 'primeng/message';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,7 @@ import { MessageModule } from 'primeng/message';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    CreateComponent
-    , NavbarComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -36,12 +35,14 @@ import { MessageModule } from 'primeng/message';
     CardModule,
     InputTextModule,
     ReactiveFormsModule,
+    FormsModule,
     ButtonModule,
     ToastModule,
     BrowserAnimationsModule,
-    InputTextareaModule
-    , ProgressSpinnerModule
-    , MessageModule
+    InputTextareaModule,
+    ProgressSpinnerModule,
+    MessageModule,
+    CheckboxModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

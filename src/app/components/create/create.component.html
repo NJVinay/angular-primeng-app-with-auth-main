@@ -40,7 +40,8 @@
       <p-button
         label="Create"
         styleClass="w-full"
-        [disabled]="createForm.invalid"
+        [disabled]="createForm.invalid || isLoading"
+        [loading]="isLoading"
         type="submit"
       ></p-button>
     </p-card>

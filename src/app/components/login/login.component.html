@@ -38,7 +38,8 @@
     <p-button
       label="SIGN IN"
       styleClass="w-full"
-      [disabled]="loginForm.invalid"
+      [disabled]="loginForm.invalid || isLoading"
+      [loading]="isLoading"
       type="submit"
     ></p-button>
     <div class="mt-2 text-center">Not a member? <a routerLink="/register">Register</a></div>

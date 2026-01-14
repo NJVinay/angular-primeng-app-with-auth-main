@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class CreateComponent {
     createForm: FormGroup;
     currentUser: any;
+    isLoading: boolean = false;
 
     constructor(
         private fb: FormBuilder,
@@ -38,11 +39,14 @@ export class CreateComponent {
                 content: this.createForm.value.content,
                 author: this.currentUser.fullName
             };
+            this.isLoading = true;
             this.itemService.createItem(itemData).subscribe({
                 next: () => {
+                    this.isLoading = false;
                     this.router.navigate(['/home']);
                 },
                 error: (err) => {
+                    this.isLoading = false;
                     console.error('Error creating item:', err);
                 }
             });

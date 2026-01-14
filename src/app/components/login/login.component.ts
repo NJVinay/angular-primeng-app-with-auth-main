@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  isLoading: boolean = false;
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
@@ -29,20 +30,25 @@ export class LoginComponent {
   get password() { return this.loginForm.controls['password']; }
 
   loginUser() {
+    if (this.loginForm.invalid) return;
     const { email, password } = this.loginForm.value;
+    this.isLoading = true;
     this.authService.getUserByEmail(email as string).subscribe(
       response => {
+        this.isLoading = false;
         if (response.length > 0 && response[0].password === password) {
+          // persist both a minimal session flag and full user for UI
           sessionStorage.setItem('email', email as string);
+          localStorage.setItem('loggedInUser', JSON.stringify(response[0]));
           this.router.navigate(['/home']);
         } else {
-          this.msgService.add({ severity: 'error', summary: 'Error', detail: 'email or password is wrong' });
+          this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Email or password is wrong' });
         }
       },
       error => {
+        this.isLoading = false;
         this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
       }
-
     )
   }
 }

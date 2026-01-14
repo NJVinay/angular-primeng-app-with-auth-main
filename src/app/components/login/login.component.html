@@ -1,6 +1,7 @@
 <div class="auth-shell">
   <p-card header="Sign in" class="auth-card">
-    <div *ngIf="isLoading" class="overlay">
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <div *ngIf="isLoading" class="overlay">
       <p-progressSpinner></p-progressSpinner>
     </div>
     <div class="field">
@@ -38,13 +39,14 @@
         <div *ngIf="password.errors?.['required']">Password is required.</div>
       </small>
     </div>
-    <p-button
-      label="SIGN IN"
-      styleClass="w-full"
-      [disabled]="loginForm.invalid || isLoading"
-      [loading]="isLoading"
-      type="submit"
-    ></p-button>
+      <p-button
+        label="SIGN IN"
+        styleClass="w-full"
+        [disabled]="loginForm.invalid || isLoading"
+        [loading]="isLoading"
+        type="submit"
+      ></p-button>
+    </form>
     <div *ngIf="errorMessage" class="p-mt-3">
       <p-message severity="error" text="{{ errorMessage }}"></p-message>
       <div class="p-mt-2 text-center">

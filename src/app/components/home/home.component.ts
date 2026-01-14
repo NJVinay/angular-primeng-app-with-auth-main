@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getCurrentUser(): User | null {
+  get currentUser(): User | null {
     const user = localStorage.getItem('loggedInUser');
     return user ? JSON.parse(user) : null;
   }

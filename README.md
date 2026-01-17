@@ -1,5 +1,7 @@
 # SPA (Angular + PrimeNG)
 
+**GitHub Repository**: https://github.com/NJVinay/angular-primeng-app-with-auth-main
+
 This is a Single Page Application built with Angular and PrimeNG. The project includes simple client-side authentication and a small mock API (served as Netlify Functions) for demo purposes.
 
 ## Live Demo
